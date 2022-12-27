@@ -54,6 +54,10 @@ code {
   font-size: 14px;
 }
 
+.info-main a:hover {
+  color: #fdcbcb;
+}
+
 .info-main-content {
   display: flex;
   justify-content: space-evenly;
@@ -105,7 +109,7 @@ code {
   margin-left: 25px;
   letter-spacing: 0.2px;
   line-height: 150%;
-  color: #ffdabf;
+  color: #fde7d7;
 }
 
 .interest {
@@ -133,7 +137,7 @@ code {
   margin-left: 25px;
   letter-spacing: 0.2px;
   line-height: 150%;
-  color: #ffdabf;
+  color: #fde7d7;
 }
 
 .footer {
