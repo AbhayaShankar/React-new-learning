@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.contact-card-main {
+  max-width: 1000px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  max-width: 400px;
+  margin-top: 25px;
+  margin-left: 100px;
+  /* background: grey; */
+  border-radius: 30px;
+  box-shadow: 2px 7.5px 8px 0 rgba(0, 0, 0, 0.6);
+}
+
+.card h2 {
+  margin-left: 60px;
+  font-size: 30px;
+  letter-spacing: 0.2px;
+  margin-top: 0;
+  margin-bottom: 0;
+  /* text-align: center; */
+}
+
+.kitten {
+  width: 250px;
+  margin: 20px 35px 10px 35px;
+  border-radius: 20px;
+  border: 0.2px solid rgb(196, 196, 196);
+}
+
+.contact-phn {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  margin: 0 15px;
+  gap: 8px;
+}
+
+.contact-phn img {
+  width: 20px;
+}
+
+.contact-mail img {
+  width: 30px;
+}
+
+.contact-mail {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  margin: 0 10px;
+  gap: 8px;
+}
