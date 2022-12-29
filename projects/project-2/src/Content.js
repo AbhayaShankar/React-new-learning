@@ -5,7 +5,7 @@ export default function Content() {
   return (
     <div className="Info">
       <img className="grid" src={grid} alt="grid-img" />
-      <h2> Online Experiences</h2>
+      <h2> Shopping Experience You Never Had</h2>
       <div className="main-info">
         <div className="content-info">
           <h4>One to One Guidance from a Super Host</h4>

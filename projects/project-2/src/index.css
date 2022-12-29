@@ -17,11 +17,17 @@ code {
 }
 
 nav {
-  height: 50px;
+  height: 35px;
   display: flex;
+  align-items: center;
   padding: 20px 20px;
   background: #ffffff;
   box-shadow: 0px 5px 7.5px rgba(0, 0, 0, 0.1);
+}
+
+.airbnb-logo {
+  width: 117;
+  height: 33px;
 }
 
 .Info > img {
@@ -37,14 +43,14 @@ nav {
 
 .Info h2 {
   text-align: center;
-  font-size: 28px;
+  font-size: 32px;
   letter-spacing: 0.3px;
 }
 
 .main-info {
   display: flex;
   justify-content: space-around;
-  margin: 0 100px 50px;
+  margin: 50px 100px 50px;
 }
 
 .content-info {
@@ -55,4 +61,43 @@ nav {
 p {
   letter-spacing: 0.2px;
   line-height: 22px;
+}
+
+.card-content {
+  max-width: 270px;
+  margin-left: 25px;
+  margin-bottom: 100px;
+  padding: 20px 50px 10px 50px;
+  border-radius: 25px;
+  /* border: 1px solid grey; */
+  box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.5);
+  background-color: rgb(237, 237, 237);
+}
+
+.merch {
+  width: 200px;
+  height: 220px;
+  border-radius: 20px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.rating > img {
+  width: 18px;
+  gap: 10px;
+  margin-right: 10px;
+}
+
+span {
+  color: grey;
+  margin-left: 10px;
+  font-weight: 400;
+}
+
+.panel {
+  display: flex;
+  gap: 10px;
 }
