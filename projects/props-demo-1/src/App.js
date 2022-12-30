@@ -2,8 +2,13 @@ import "./App.css";
 import Main from "./Main";
 import Jokes from "./Jokes";
 import "../src/index";
+import jokesdata from "./jokesdata";
 
 function App() {
+  console.log(jokesdata);
+  const jokeElement = jokesdata.map((joke) => {
+    return <Jokes setup={joke.Setup} punchline={joke.Punchline} />;
+  });
   return (
     <div>
       <div className="contact-card-main">
@@ -33,7 +38,7 @@ function App() {
         />
       </div>
       <div className="jokes-content-box">
-        <Jokes
+        {/* <Jokes
           punchline="It's hard to explain puns to kleptomaniacs because 
         they always take things literally."
           isPun={true}
@@ -66,7 +71,8 @@ function App() {
           setup="What's the best thing about Switzerland?"
           punchline=" I don't know, but the flag is a big plus!"
           isPun={false}
-        />
+        /> */}
+        {jokeElement}
       </div>
     </div>
   );
