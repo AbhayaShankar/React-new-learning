@@ -3,16 +3,25 @@ import Main from "./Main";
 import Jokes from "./Jokes";
 import "../src/index";
 import jokesdata from "./jokesdata";
+import kitties from "./kitties";
 
 function App() {
   console.log(jokesdata);
   const jokeElement = jokesdata.map((joke) => {
     return <Jokes setup={joke.Setup} punchline={joke.Punchline} />;
   });
+
+  const kittiesElement = kitties.map((kit) => {
+    return (
+      <Main img={kit.img} name={kit.name} phone={kit.phn} email={kit.email} />
+    );
+  });
+
   return (
     <div>
       <div className="contact-card-main">
-        <Main
+        {kittiesElement}
+        {/* <Main
           img="/Images/kit1.jfif"
           name="Mr. Wiskerson"
           phn=" 034-8544636"
@@ -35,7 +44,7 @@ function App() {
           name="Pumpkin Pie"
           phn=" 091-25  66116"
           email="fransis@gmail.com"
-        />
+        /> */}
       </div>
       <div className="jokes-content-box">
         {/* <Jokes

@@ -6,7 +6,7 @@ import React from "react";
 import call from "../src/Images/call.png";
 import mail from "../src/Images/mail.png";
 
-export default function Main({ img, name, phn, email }) {
+export default function Main({ img, name, phone, email }) {
   //   console.log(props);
   //   console.log(img);
   return (
@@ -16,7 +16,7 @@ export default function Main({ img, name, phn, email }) {
 
       <div className="contact-phn">
         <img src={call} alt="phone-img" />
-        <p> {phn}</p>
+        <p> {phone}</p>
       </div>
 
       <div className="contact-mail">
