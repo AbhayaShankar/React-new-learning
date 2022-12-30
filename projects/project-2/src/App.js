@@ -2,14 +2,28 @@ import React from "react";
 import Navbar from "../src/Navbar";
 import Content from "../src/Content";
 import Card from "./Card";
+import data from "./data";
 
 function App() {
+  const cardElements = data.map((dataset) => {
+    return (
+      <Card
+        img={dataset.img}
+        rating={dataset.stats.rating}
+        views={dataset.stats.views}
+        place={dataset.location}
+        title={dataset.title}
+        price={dataset.price}
+      />
+    );
+  });
   return (
     <div>
       <Navbar />
       <Content />
       <div className="panel">
-        <Card
+        {cardElements}
+        {/* <Card
           img="/Images/merch.jfif"
           rating="4.5"
           views="6"
@@ -37,7 +51,7 @@ function App() {
 
         <Card
           img="/Images/Luffy.jpg"
-          rating="5"
+          rating="5.0"
           views="165"
           place="Japan"
           title="Luffy Bounty Poster"
@@ -51,7 +65,7 @@ function App() {
           place="USA"
           title="Bobblehead : Batman"
           price="$2"
-        />
+        /> */}
       </div>
     </div>
   );
