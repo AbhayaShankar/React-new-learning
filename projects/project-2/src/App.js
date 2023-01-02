@@ -8,12 +8,15 @@ function App() {
   const cardElements = data.map((dataset) => {
     return (
       <Card
+        key={dataset.id}
         img={dataset.img}
         rating={dataset.stats.rating}
         views={dataset.stats.views}
         place={dataset.location}
         title={dataset.title}
         price={dataset.price}
+        soldout={dataset.soldoutImg}
+        stock={dataset.openSpots}
       />
     );
   });
@@ -22,7 +25,8 @@ function App() {
       <Navbar />
       <Content />
       <div className="panel">
-        {cardElements}
+        <section className="card-list">{cardElements}</section>
+
         {/* <Card
           img="/Images/merch.jfif"
           rating="4.5"
