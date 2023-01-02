@@ -4,39 +4,30 @@ import React from "react";
 import star from "./Images/star.png";
 import "./index.css";
 
-export default function Card({
-  soldout,
-  img,
-  rating,
-  views,
-  place,
-  title,
-  price,
-  stock,
-}) {
+export default function Card({ dataset }) {
   return (
     <div className="card-content">
       <div>
         {/* if ({stock==0}) {
             
         } */}
-        {stock === 0 && (
-          <img className="soldout-img" src={soldout} alt="soldout" />
+        {dataset.openSpots === 0 && (
+          <img className="soldout-img" src={dataset.soldoutImg} alt="soldout" />
         )}
-        <img className="merch" src={img} alt="merch" />
+        <img className="merch" src={dataset.img} alt="merch" />
       </div>
       <div className="rating">
         <img src={star} alt="star" />
         <p>
-          {rating}
+          {dataset.rating}
           <span>
-            ({views}) • {place}
+            ({dataset.stats.views}) • {dataset.location}
           </span>
         </p>
       </div>
-      <p>{title}</p>
+      <p>{dataset.title}</p>
       <h4>
-        From {price}
+        From {dataset.price}
         <span>/ person</span>
       </h4>
     </div>
