@@ -13,6 +13,14 @@ code {
     monospace;
 }
 
+nav {
+  overflow-x: hidden;
+  left: 0;
+  right: 0;
+  top: 0;
+  position: fixed;
+}
+
 .navbar {
   font-family: Georgia, "Times New Roman", Times, serif;
   display: flex;
@@ -45,6 +53,10 @@ code {
   font-weight: 600;
   letter-spacing: 0.2px;
   color: rgb(34, 34, 34);
+}
+
+.container:first-child {
+  margin-top: 150px;
 }
 
 .list {

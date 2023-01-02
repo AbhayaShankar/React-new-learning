@@ -4,7 +4,7 @@ import location from "./Images/location.png";
 
 export default function Main({ data }) {
   return (
-    <div>
+    <div className="container">
       <div className="list">
         <div className="location-image">
           <img src={data.coverImg} alt="japan" />
