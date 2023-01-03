@@ -111,6 +111,10 @@ p {
   margin-right: 10px;
 }
 
+.merch:hover {
+  transform: scale(1.05);
+}
+
 span {
   color: grey;
   margin-left: 10px;

@@ -41,7 +41,7 @@ export default [
       rating: 5.0,
       views: 233,
     },
-    location: "USA",
+    location: "Online",
     openSpots: 3,
   },
   {
@@ -71,7 +71,7 @@ export default [
       rating: 3.9,
       views: 3,
     },
-    location: "USA",
+    location: "Online",
     openSpots: 1,
   },
 ];
