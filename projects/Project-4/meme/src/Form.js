@@ -1,9 +1,12 @@
 import React from "react";
+import useState from "react";
 import image from "./Images/image.png";
 import memesdata from "./memesdata";
 
 export default function Form() {
   function getMemeImage() {
+    const result = { useState };
+    console.log(result);
     const memeArray = memesdata.data.memes;
     const memeIndex = Math.floor(Math.random() * memeArray.length);
     const url = memeArray[memeIndex].url;
