@@ -21,7 +21,7 @@ code {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 40px;
+  padding: 6px 40px;
   background-image: linear-gradient(
     to right,
     rgb(0, 119, 12),
@@ -64,7 +64,7 @@ code {
   display: flex;
   align-items: center;
   gap: 20px;
-  margin-top: 60px;
+  margin-top: 20px;
 }
 
 .input {
@@ -91,7 +91,7 @@ code {
     rgb(120, 232, 0)
   );
   color: azure;
-  margin-top: 25px;
+  margin-top: 15px;
   border-radius: 10px;
   cursor: pointer;
   font-size: 18px;
@@ -103,4 +103,13 @@ code {
 .img-image {
   width: 30px;
   margin-left: 20px;
+}
+
+.meme-image {
+  margin-top: 12px;
+  width: 500px;
+  height: 580px;
+  border: 5px solid black;
+  border-radius: 8px;
+  /* height: 600px; */
 }
