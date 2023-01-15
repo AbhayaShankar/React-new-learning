@@ -2,15 +2,13 @@ Async/await is a special syntax used with promises.
 Async is geenrally used with fucntions, placed before a function simply means that the function returns a promise.
 
 ```javascript
-
-Async function getUser(){
-    const res = await fetch('/movies');
-    console.log(res);
-    const parsedData =  await res.json();
-    console.log(parsedData);
-    return parsedData;
+async function getUser() {
+  const res = await fetch("/movies");
+  console.log(res);
+  const parsedData = await res.json();
+  console.log(parsedData);
+  return parsedData;
 }
-
 ```
 
 Here, we know that fetch internally uses promises to resolve the res(response).
@@ -18,7 +16,7 @@ If we dont use await it will return a promise pending. To resolve this promise w
 
 ```javascript
 
-Async function getUser(){
+async function getUser(){
     const res = fetch('/movies');
     console.log(res);
 
@@ -28,7 +26,7 @@ Next, if we console log the res that is coming from resolving fetch, We will get
 
 ```javascript
 
-Async function getUser(){
+async function getUser(){
     const res = fetch('/movies');
     console.log(res);
     const parsedData = res.json();
@@ -52,7 +50,7 @@ ii. Server side error (500-599)
 Fetch doesnot show any error even if it encounters a bad HTTP request status.
 
 ```javascript
-Async function getUser(){
+async function getUser(){
     const res = fetch('/abhaya').then(
         // some code
     ).catch(
@@ -69,7 +67,7 @@ Although it encounters a bad Http status, it doesnt go inside .catch
 We have to explicitly define or throw an error to handle.
 
 ```javascript
-Async function getUser(){
+async function getUser(){
     const res = fetch('/abhaya').then((res) => {
   if (res.ok) {
     return res.json();
