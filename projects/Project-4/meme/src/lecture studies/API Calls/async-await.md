@@ -67,22 +67,24 @@ Although it encounters a bad Http status, it doesnt go inside .catch
 We have to explicitly define or throw an error to handle.
 
 ```javascript
-async function getUser(){
-    const res = fetch('/abhaya').then((res) => {
-  if (res.ok) {
-    return res.json();
-  }
-  throw new Error('Something went wrong');
-}).then((resJson) => {
-  // Do something with the response
-}).catch(
-        error => {
-            throw (error)
-        }
-    );  // such api doesnt exist
-    console.log(res);
-    const parsedData = res.json();
-    console.log(parsedData);
+async function getUser() {
+  const res = fetch("/abhaya")
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      throw new Error("Something went wrong");
+    })
+    .then((resJson) => {
+      // Do something with the response
+    })
+    .catch((error) => {
+      throw error;
+    }); // such api doesnt exist
+  console.log(res);
+  const parsedData = res.json();
+  console.log(parsedData);
+}
 ```
 
 We have to explicitly throw an error if res.ok == false
