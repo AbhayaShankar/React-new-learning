@@ -41,3 +41,57 @@ This is again a internal working of parsing the raw data using .json()
 To resolve this promise again we need to use await.
 
 After that we return the parsed json file which then will return us the data fetched from the api.
+
+A good HTTP response status is (200-299)
+Now to handle errors On fetch :
+
+There are two types of errors :
+i. Client side error (400-499)
+ii. Server side error (500-599)
+
+Fetch doesnot show any error even if it encounters a bad HTTP request status.
+
+```javascript
+Async function getUser(){
+    const res = fetch('/abhaya').then(
+        // some code
+    ).catch(
+        error => {
+            throw (error)
+        }
+    );  // such api doesnt exist
+    console.log(res);
+    const parsedData = res.json();
+    console.log(parsedData);
+```
+
+Although it encounters a bad Http status, it doesnt go inside .catch
+We have to explicitly define or throw an error to handle.
+
+```javascript
+Async function getUser(){
+    const res = fetch('/abhaya').then((res) => {
+  if (res.ok) {
+    return res.json();
+  }
+  throw new Error('Something went wrong');
+}).then((resJson) => {
+  // Do something with the response
+}).catch(
+        error => {
+            throw (error)
+        }
+    );  // such api doesnt exist
+    console.log(res);
+    const parsedData = res.json();
+    console.log(parsedData);
+```
+
+We have to explicitly throw an error if res.ok == false
+this also can be done through :
+
+```javascript
+if (!res.ok) {
+  throw new Error("something wrong - Error");
+}
+```
