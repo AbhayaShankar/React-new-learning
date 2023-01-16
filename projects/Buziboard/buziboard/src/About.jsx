@@ -1,29 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import Contacts from "./Contacts";
 
 export default function About() {
-  const [data, setData] = useState([]);
+  const [user, setUser] = useState([]);
 
-  async function getData() {
-    const res = await fetch("https://jsonplaceholder.typicode.com/users");
-    const resData = await res.json();
-    setData(resData);
-    console.log(resData);
+  async function userDetail() {
+    const res = await fetch(
+      `https://jsonplaceholder.typicode.com/users/${user.id}`
+    );
+    const resdata = await res.json();
+    setUser(resdata);
+    console.log(resdata);
   }
 
   useEffect(() => {
-    getData();
+    userDetail();
   }, []);
 
-  const cardDetails = data.map((data) => {
-    return <Contacts key={data.id} data={data} />;
-  });
+  // const cardIndividual = user.map((user) => {
+
+  // })
+
   return (
     <div>
       <Navbar />
-      <section>{cardDetails}</section>
+      <Contacts />
     </div>
   );
 }

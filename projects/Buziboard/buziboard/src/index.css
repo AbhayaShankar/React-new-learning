@@ -8,9 +8,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(127, 255, 212, 0.822);
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
-  margin-bottom: 25px;
+  background: linear-gradient(
+    to right,
+    rgb(42, 42, 42),
+    rgb(56, 56, 56),
+    rgb(64, 64, 64),
+    rgb(70, 70, 70),
+    rgb(76, 76, 76)
+  );
+  padding-bottom: 5px;
+  box-shadow: 0 0 10px white;
 }
 .navbar-name {
   font-size: 32px;
@@ -30,7 +37,7 @@
   letter-spacing: 1.2px;
   font-weight: 400;
   text-decoration: none;
-  color: black;
+  color: rgb(0, 0, 0);
   /* letter-spacing: 2px; */
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
@@ -50,6 +57,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  background: #111;
 
   /* align-items: center; */
   /* margin: 30px 50px; */

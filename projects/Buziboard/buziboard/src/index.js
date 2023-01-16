@@ -5,7 +5,7 @@ import "./cardstyle.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import About from "./About";
-import Projects from "./Contacts";
+import Projects from "./Projects";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +18,10 @@ const router = createBrowserRouter([
   },
   {
     path: "/projects",
+    element: <Projects />,
+  },
+  {
+    path: "/user/1",
     element: <Projects />,
   },
 ]);

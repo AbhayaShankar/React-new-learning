@@ -14,7 +14,7 @@ export default function Navbar() {
           About
         </Link>
         <Link className="link" to="/projects">
-          Contact
+          Projects
         </Link>
       </div>
     </div>
