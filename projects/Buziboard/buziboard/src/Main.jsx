@@ -1,12 +1,12 @@
 import React from "react";
 import abhaya from "./Images/Abhaya.PNG";
-export default function main({ data }) {
+export default function Main({ data }) {
   return (
     <div className="card--0">
       <div className="card">
         <div className="card-top">
           <h3>Buziboard</h3>
-          <button>Get your card</button>
+          <button className="btn">Get your card</button>
         </div>
         <div className="card-main">
           <div className="card-img">

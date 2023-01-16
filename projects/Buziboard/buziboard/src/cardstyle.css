@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.cardDetails {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardDetails-main {
+  width: 50%;
+  background-image: linear-gradient(to bottom right, green, lightgreen);
+}

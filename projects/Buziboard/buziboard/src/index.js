@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import "./cardstyle.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import About from "./About";
-import Projects from "./Projects";
+import Projects from "./Contacts";
 
 const router = createBrowserRouter([
   {

@@ -25,10 +25,23 @@
   padding: 0 45px;
 }
 
-.navbar-links h3 {
+.buziboard {
+  padding-left: 15px;
+  letter-spacing: 1.2px;
+  font-weight: 400;
+  text-decoration: none;
+  color: black;
+  /* letter-spacing: 2px; */
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+.link {
   padding-left: 50px;
   letter-spacing: 1.2px;
   font-weight: 500;
+  text-decoration: none;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
 }
 
 .card-- {
@@ -62,23 +75,34 @@
   letter-spacing: 1px;
 }
 
-.card-top button {
+.btn {
   padding: 8px;
   margin: 15px 15px 0 0;
   border-radius: 15px;
   cursor: pointer;
   font-weight: 400;
   letter-spacing: 0.5px;
+  transition: 0.5s ease-in-out;
 }
 
-.card-top button:hover {
+.btn:hover {
   color: white;
-  background-color: rgb(60, 60, 60);
+  background-image: linear-gradient(
+    to left,
+    rgb(108, 108, 108),
+    rgb(178, 178, 178)
+  );
 }
 
 .card {
   margin: 25px;
-  background-color: rgb(228, 228, 228);
+  background-image: linear-gradient(
+    to bottom right,
+    grey,
+    rgb(197, 197, 197),
+    white
+  );
+  /* background-color: rgb(228, 228, 228); */
   border-radius: 15px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }

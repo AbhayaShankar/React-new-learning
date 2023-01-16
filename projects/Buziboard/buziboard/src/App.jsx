@@ -1,26 +1,29 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
-import Dataset from "./Dataset";
 import Main from "./Main";
 
 export default function App() {
+  const [data, setData] = useState([]);
+
   async function getData() {
     const res = await fetch("https://jsonplaceholder.typicode.com/users");
-    return await res.json();
-    console.log({ getData });
+    const resData = await res.json();
+    setData(resData);
+    console.log(resData);
   }
 
-  const cardElements = Dataset.map((data) => {
-    return <Main key={Dataset.id} data={data} />;
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const cardElements = data.map((data) => {
+    return <Main key={data.id} data={data} />;
   });
+
   return (
     <div>
       <Navbar />
       <section className="card--">{cardElements}</section>
-      <Link to="/about">About</Link>
-      <br />
-      <Link to="/projects">Projects</Link>
     </div>
   );
 }
