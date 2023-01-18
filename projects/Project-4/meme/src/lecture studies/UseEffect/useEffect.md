@@ -319,10 +319,6 @@ The effect function is executed when the component is mounted or updated, and th
 
 The purpose of the dependency array is to control when the effect function is re-run and to prevent unnecessary re-renders. If a variable or state is included in the dependency array, the effect function will re-run whenever that variable or state changes. If a variable or state is not included in the dependency array, the effect function will not re-run when that variable or state changes.
 
-.
-
-.
-.
 So that seems to be goiing fine. Lets take up another example to have a deeper udnerstanfing of the concepts here :
 
 ```javascript
@@ -373,3 +369,46 @@ After that if the "Get Next Character" is clicked, it changes the count value fr
 Note :
 
 `JSON.stringify(starWarsData, null, 2)` is a JavaScript expression that converts the `starWarsData` object to a string in JSON (JavaScript Object Notation) format. The **first argument** of the `JSON.stringify()` method is the _object_ to be converted. The **second argument** is the _replacer function_, which is used to filter-out values. In this case, it is passed as `null` so no filter-out is applied. The **third argument** is the number of spaces to use for _indentation_ when pretty-printing the JSON string. In this case, it is passed as `2`, so the JSON string will be indented with 2 spaces.
+
+Stop Cheating Dependencies in React :
+
+Cheating React about dependencies has its consequences. Initially it does make sense, but believe me it doesn't. I've been there too.
+
+```javascript
+function SearchResults() {
+  async function fetchData() {
+    // ...
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []); // Is this okay? Not always -- Seems there is a better way to do so...
+
+  // ...
+}
+```
+
+What do we mean by Cheating React about the dependencies.
+Lets take an example and look into this more clearly.
+
+```javascript
+// first we pass name = 'Abhaya' ,
+// Second we pass name = 'Shankar'
+useEffect(() => {
+  document.title = "Hello, " + name;
+}, [name]);
+```
+
+We have passed `name` as dependency in the effect fucntion.
+Every time it renders it will check for the dependency parameter if it has been changed or not.
+
+Here at first, Abhaya is printed on the screen,
+Next when name parameter changes, react knows the state is changed and it re-renders the component. This time it sees or checks for the dependency parameter if that has changed or not then only `useEffect` function will be called
+
+But suppose we had defined the prev effect fucntion like this :
+
+```javascript
+useEffect(() => {
+  document.title = "Hello, " + name;
+}, []);
+```
