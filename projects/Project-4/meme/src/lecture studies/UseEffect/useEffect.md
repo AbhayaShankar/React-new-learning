@@ -412,3 +412,5 @@ useEffect(() => {
   document.title = "Hello, " + name;
 }, []);
 ```
+
+Here, After the state has been changed and the component is re-rendered, React doesn't know if the dependency parameter has been changed or not as the parameter is empty. So it skips the effect.
