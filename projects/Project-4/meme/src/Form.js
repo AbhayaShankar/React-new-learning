@@ -1,28 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import image from "./Images/image.png";
-import memesdata from "./memesdata";
 
 export default function Form() {
-  const [meme, setMeme] = React.useState({
+  const [meme, setMeme] = useState({
     topText: "",
     bottomText: "",
     randomImage: "https://i.imgflip.com/4xgqu.jpg",
   });
   console.log(meme);
   function handleChange(event) {
-    const { name, type, value } = event.target;
+    const { name, value } = event.target;
     setMeme((prevMemeData) => ({
       ...prevMemeData,
       [name]: value,
     }));
   }
 
-  const [allMemeImages, setAllMemeImages] = React.useState(memesdata);
+  const [allMeme, setAllMeme] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.imgflip.com/get_memes")
+      .then((res) => res.json())
+      .then((dataset) => setAllMeme(dataset.data.memes));
+  }, []);
+
+  /* Here we shouldn't use async await ,mmmm lets see why?
+  
+  useEffect(async () => {
+    const res = await fetch("https://api.imgflip.com/get_memes");
+    const data = await res.json();
+    setAllMeme(data.data.memes);
+  }, []);
+*/
 
   function getMemeImage() {
-    const memeArray = allMemeImages.data.memes;
-    const memeIndex = Math.floor(Math.random() * memeArray.length);
-    const url = memeArray[memeIndex].url;
+    const memeIndex = Math.floor(Math.random() * allMeme.length);
+    const url = allMeme[memeIndex].url;
     console.log(url);
     setMeme((prevState) => ({
       ...prevState,

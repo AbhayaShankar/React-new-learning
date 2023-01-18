@@ -150,12 +150,174 @@ It will diplay after the 3000ms interval after timeout fires :
 
 As button is clicked, the onClick fucntion is called and it remembers the state value at that time, but it console.logs the value after 3000ms after the timeout interval fires.
 
-.
-.
+Do you know some effects have a clean phase?
+Well It is essentially to **undo** an effect for cases like subscription.
 
-.
-.
-.
+Let's talk about Cleanup function :
+
+In React, a `cleanup` function is a function that is executed when a component is _unmounted_ or when certain props or state changes. The purpose of a cleanup function is to perform any necessary actions to _clean up_ or _reset_ any resources or state that the component was using. This can include things like canceling network requests, removing event listeners, or resetting timers.
+
+A cleanup function is typically defined within a component and is passed to the React `useEffect` hook, which is used to manage side effects within a component. The `useEffect` hook takes two arguments: the first is the effect function, and the second is a dependency array. The effect function is executed when the component is mounted or updated, and the dependency array is used to determine when the effect function should be re-run. The cleanup function is returned from the effect function and is executed when the component is unmounted or when the component's dependencies change.
+
+```javascript
+useEffect(() => {
+  ChatAPI.subscribeToFriendStatus(props.id, handleStatusChange);
+  // This below is the cleanup fucntion...
+  return () => {
+    ChatAPI.unsubscribeFromFriendStatus(props.id, handleStatusChange);
+  };
+});
+```
+
+Let's say in this case we pass {props.id} = 1 on first render and then it changes to {prop.id} = 2,
+What do you think we happen behind the scene ?
+
+- React cleans up the effect for {id: 1}.
+- React renders UI for {id: 2}.
+- React runs the effect for {id: 2}
+
+Well this is not the case...
+
+Actually what happens is :
+
+- React renders UI for {id: 2}.
+- The browser paints. We see the UI for {id: 2} on the screen.
+- React cleans up the effect for {id: 1}.
+- React runs the effect for {id: 2}.
+
+**Every function inside the component render (including event handlers, effects, timeouts or API calls inside them) captures the props and state of the render call that defined it.**
+
+So lets elaborate on this topic :
+
+```javascript
+// First render, props are {id: 1}
+function Example() {
+  // ...
+  useEffect(
+    // Effect from first render
+    () => {
+      ChatAPI.subscribeToFriendStatus(1, handleStatusChange);
+      // Cleanup for effect from first render
+      return () => {
+        ChatAPI.unsubscribeFromFriendStatus(1, handleStatusChange);
+      };
+    }
+  );
+  // ...
+}
+
+// Next render, props are {id: 2}
+function Example() {
+  // ...
+  useEffect(
+    // Effect from second render
+    () => {
+      ChatAPI.subscribeToFriendStatus(2, handleStatusChange);
+      // Cleanup for effect from second render
+      return () => {
+        ChatAPI.unsubscribeFromFriendStatus(2, handleStatusChange);
+      };
+    }
+  );
+  // ...
+}
+```
+
+A beautiful quote :
+_Kingdoms will rise and turn into ashes, the Sun will shed its outer layers to be a white dwarf, and the last civilization will end. But nothing will make the props “seen” by the first render effect’s cleanup anything other than {id: 1}_
+
+Lets take another example to understand the cleanup fucntion :
+
+Here, we wanted to track the width of the window as we change the size of the window (may that be width or height).
+We defined a state which keeps track of our width as we change the window width/height. A button can toggle the display of width.
+
+```javascript
+const [show, setShow] = React.useState(true);
+
+function toggle() {
+  setShow((prevShow) => !prevShow);
+}
+
+return (
+  <div className="container">
+    <button onClick={toggle}>Toggle WindowTracker</button>
+    {show && <WindowTracker />}
+  </div>
+);
+```
+
+---
+
+```javascript
+import React, { useState, useEffect } from "react";
+
+export default function WindowTracker() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener("resize", function () {
+      setWindowWidth(window.innerWidth);
+    });
+  }, []);
+
+  return <h1>Window width: {windowWidth}</h1>;
+}
+```
+
+Suppose we toggle off the display and now we can't see the width of the window and we change the width. We would get an error like :
+
+`!Warning: Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in a useEffect cleanup function. at WindowTracker `
+
+If we dont specify the cleanup function, it seems to have something called as **Memory Leak**.
+A `memory leak` in useEffect can occur when an effect function is not cleaned up properly when a component is `unmounted` or when certain props or state changes. This can cause the effect function to continue running even though the _component is no longer being rendered_, leading to unnecessary _resource usage and potential performance issues_.
+
+To oveercome this issue we need to resolve this by introducing a cleanup function :
+
+```javascript
+import React, { useState, useEffect } from "react";
+
+export default function WindowTracker() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    function watchWidth() {
+      console.log("Setting up...");
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", watchWidth);
+    // cleanup fucntion
+    return function () {
+      console.log("Cleaning up...");
+      window.removeEventListener("resize", watchWidth);
+    };
+  }, []);
+
+  return <h1>Window width: {windowWidth}</h1>;
+}
+```
+
+Here are a few common causes of memory leaks in `useEffect` :
+
+- Not returning a cleanup function
+- Incorrect dependency array
+- Not cleaning up event listeners
+- Not cleaning up timers or intervals
+- Not cleaning up network requests
+
+To avoid **memory leaks**, you should always make sure that your effect functions return a cleanup function, and that the cleanup function handles any necessary cleanup tasks such as canceling network requests, removing event listeners, and clearing timers or intervals. Additionally, make sure to specify the dependency array correctly.
+
+----- Dependency array --------
+
+One thing that people face are running into infinite loops. Even me during my starting days, I would ran into a effect hook runnning for infinite times. It would seem that code written is correct, where did it go wrong. Well no need to worry, enters dependency array to the rescue.
+
+We already know that the `useEffect` takes two parameters -
+First - an effect function
+Second - A dependency array
+
+The effect function is executed when the component is mounted or updated, and the `dependency` array is used to determine when the effect function should be re-run. The `dependency` array is an array of variables or state that the effect function depends on. If any of the values in the dependency array change, the effect function is re-run.
+
+The purpose of the dependency array is to control when the effect function is re-run and to prevent unnecessary re-renders. If a variable or state is included in the dependency array, the effect function will re-run whenever that variable or state changes. If a variable or state is not included in the dependency array, the effect function will not re-run when that variable or state changes.
 
 .
 
@@ -164,13 +326,13 @@ As button is clicked, the onClick fucntion is called and it remembers the state 
 So that seems to be goiing fine. Lets take up another example to have a deeper udnerstanfing of the concepts here :
 
 ```javascript
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function App() {
-  const [starWarsData, setStarWarsData] = React.useState({});
-  const [count, setCount] = React.useState(1);
+  const [starWarsData, setStarWarsData] = useState({});
+  const [count, setCount] = useState(1);
 
-  React.useEffect(
+  useEffect(
     function () {
       console.log("Effect ran");
       fetch(`https://swapi.dev/api/people/${count}`)
