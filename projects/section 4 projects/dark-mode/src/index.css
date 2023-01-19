@@ -117,8 +117,9 @@ main {
   padding: 57px 27px;
   background-image: url("/public/images/react-icon-light.webp");
   background-repeat: no-repeat;
-  background-position: right center;
+  background-position: right -260px center;
   flex: 1 1 auto;
+  /* transform: translateX(250px); */
   background-color: white;
   color: #2b283a;
 }
