@@ -5,18 +5,41 @@ import Die from "./component/Die";
 
 function App() {
   const [dice, setDice] = useState(allNewDice());
+  const [tenzies, setTenzies] = useState(false);
+
+  useEffect(() => {
+    const allHeld = dice.every((die) => die.isHeld === true);
+    const firstValue = dice[0].value;
+    const allSameValue = dice.every((die) => die.value === firstValue);
+    if (allHeld && allSameValue) {
+      setTenzies(true);
+      console.log("You have won!");
+    }
+  }, [dice]);
+
+  function generateNewDie() {
+    return {
+      value: Math.floor(Math.random() * 6 + 1),
+      isHeld: false,
+      id: nanoid(),
+    };
+  }
 
   function allNewDice() {
     const newArray = [];
     for (let i = 0; i < 10; i++) {
-      newArray.push({
-        value: Math.floor(Math.random() * 6 + 1),
-        isHeld: false,
-        id: nanoid(),
-      });
+      newArray.push(generateNewDie());
     }
     // console.log(newArray);
     return newArray;
+  }
+
+  function rollDice(id) {
+    setDice((oldDice) =>
+      oldDice.map((die) => {
+        return die.isHeld ? die : generateNewDie();
+      })
+    );
   }
 
   function holdDice(id) {
@@ -25,7 +48,6 @@ function App() {
         return die.id === id ? { ...die, isHeld: !die.isHeld } : die;
       })
     );
-    // console.log(die);
   }
 
   const diceValue = dice.map((die) => (
@@ -49,12 +71,11 @@ function App() {
         <br />
         <br />
         <div className="dice-container">{diceValue}</div>
-        <button onClick={() => setDice(allNewDice)} className="roll">
+        <button onClick={rollDice} className="roll">
           Roll
         </button>
       </main>
     </div>
   );
 }
-
 export default App;
