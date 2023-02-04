@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Montserrat:wght@400;500&family=Poppins&family=Sigmar+One&display=swap");
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -22,6 +24,17 @@ body {
   justify-content: center;
 }
 
+.tenzies {
+  font-size: 40px;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 1px;
+}
+
+.text {
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+}
+
 .dice-container {
   display: grid;
   grid-template: auto auto / repeat(5, 1fr);
@@ -43,4 +56,25 @@ body {
 
 .dice-value {
   font-size: 2.25rem;
+}
+
+.roll {
+  padding: 14px 50px;
+  background-color: blueviolet;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  margin-top: 50px;
+  font-size: 22px;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.roll:focus {
+  outline: none;
+}
+
+.roll:active {
+  box-shadow: inset -5px -5px 10px 0 rgba(0, 0, 0, 0.7);
 }
