@@ -43,13 +43,52 @@ export default function Question({
       arr[i] = arr[j];
       arr[j] = temp;
     }
-    console.log(arr);
+    // console.log(arr);
     return arr;
+  }
+
+  const answerOptions = ansList.map((ans, index) => {
+    return (
+      <button
+        className={`answer-btn ${ansIndex === index ? "selected" : null} 
+        ${!quizCompleted ? null : checkAnswer(index, ans)}`}
+        id={index}
+        value={ans}
+        onClick={(event) => handleClick(event, index)}
+      >
+        {decode(ans)}
+      </button>
+    );
+  });
+
+  function checkAnswer(index, ans) {
+    if (
+      (isCorrect && ansIndex === index) ||
+      (!isCorrect && ans === correct_answer)
+    ) {
+      return "correct";
+    } else if (ansIndex === index && !isCorrect) {
+      return "wrong";
+    } else {
+      return null;
+    }
+  }
+
+  function handleClick(event, index) {
+    if (event.target.value !== selAnswer) {
+      setSelAnswer(event.target.value);
+      setAnsIndex(index);
+      event.target.value === correct_answer
+        ? setIsCorrect(true)
+        : setIsCorrect(false);
+    }
   }
 
   return (
     <>
-      <h1>Abhaya</h1>
+      <h1>{decode(question)}</h1>
+      <h3>{answerOptions}</h3>
+
       {/* button to see what randomAnswerfunction generates. */}
       {/* <button
         onClick={() => randomAnswer([correct_answer, ...incorrect_answers])}

@@ -91,7 +91,7 @@
   padding-left: 150px;
 }
 
-.answers {
+.answer-btn {
   width: fit-content;
   /* overflow-x: hidden; */
   height: 45px;
@@ -145,4 +145,16 @@
   letter-spacing: 0.5px;
   font-size: 18px;
   color: #000000;
+}
+
+.correct {
+  outline: none;
+  background-color: #94d7a2;
+  border: 2px solid transparent;
+}
+
+.wrong {
+  outline: none;
+  background-color: #f8bcbc;
+  border: 2px solid transparent;
 }
