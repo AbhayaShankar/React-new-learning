@@ -8,6 +8,7 @@
 .container {
   background-color: #f5f7fb;
   height: 100vh;
+  overflow-y: hidden;
 }
 
 .intro-container {
@@ -78,7 +79,7 @@
   font-weight: 600;
   font-family: "Karla", sans-serif;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding-left: 150px;
 }
 
@@ -91,8 +92,10 @@
 }
 
 .answers {
-  width: 80px;
-  height: 25px;
+  width: fit-content;
+  /* overflow-x: hidden; */
+  height: 45px;
+  padding: 0 15px;
   border: 1px solid #4d5b9e;
   border-radius: 8px;
   color: #293264;
@@ -107,4 +110,24 @@
   margin: auto;
   opacity: 0.4;
   margin-top: 20px;
+}
+
+.check-btn {
+  width: 200px;
+  font-size: 18px;
+  font-family: "Inter", sans-serif;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  color: #f5f7fb;
+  background-color: #4d5b9e;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.App > button {
+  margin: auto;
+  margin-top: 30px;
 }
