@@ -131,3 +131,18 @@
   margin: auto;
   margin-top: 30px;
 }
+
+.quiz-score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 50px;
+}
+
+.quiz-score h4 {
+  font-family: "Inter", sans-serif;
+  letter-spacing: 0.5px;
+  font-size: 18px;
+  color: #000000;
+}
