@@ -127,6 +127,14 @@
   justify-content: center;
 }
 
+.check-btn:focus {
+  outline: none;
+}
+.check-btn:active {
+  background-color: #d6dbf5;
+  color: #4d5b9e;
+}
+
 .App > button {
   margin: auto;
   margin-top: 30px;
@@ -145,6 +153,30 @@
   letter-spacing: 0.5px;
   font-size: 18px;
   color: #000000;
+}
+
+.answer-btn {
+  padding: 3px 5px;
+  min-height: 25px;
+  min-width: 70px;
+  width: fit-content;
+  height: fit-content;
+  margin-right: 15px;
+  background-color: whitesmoke;
+  border-radius: 7px;
+  border: 2px solid #293264;
+  font-size: 0.85rem;
+  color: #293264;
+  cursor: pointer;
+}
+.answer-btn:focus {
+  outline: none;
+}
+
+.selected {
+  outline: none;
+  background-color: #d6dbf5;
+  border: 2px solid transparent;
 }
 
 .correct {
