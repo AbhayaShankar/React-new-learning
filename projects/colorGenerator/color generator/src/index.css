@@ -1,7 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Karla&display=swap");
+
 *,
 ::before,
 ::after {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Karla", sans-serif;
+}
+
+body {
+  background-color: rgb(212, 248, 248);
+}
+
+.container {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 2rem 1rem;
+  font-size: 24px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.container h1 {
+  color: rgb(14, 88, 104);
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+/* 
+.form {
+  display: flex;
+  align-items: center;
+} */
+
+.btn {
+  padding: 12px 25px;
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(57, 167, 192);
+  outline: none;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+}
+
+.form input {
+  font-size: 20px;
+  padding: 12px 5px;
+  color: rgb(96, 96, 96);
+}
+
+.color-code {
+  outline: none;
+  border: none;
+  border-radius: 8px 0 0 8px;
+}
+
+.error {
+  outline: none;
+  border: 2px solid rgb(206, 2, 2);
+  border-radius: 8px 0 0 8px;
+}
+
+.colors {
+  min-height: calc(100vh - 100px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(203.33px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(96px, 1fr));
+}
+
+.color {
+  padding: 2rem 2rem;
+  cursor: pointer;
+  font-size: 1rem;
+  text-transform: none;
+}
+.weight {
+  margin-bottom: 0;
+  padding-bottom: 0.5rem;
+  color: var(--clr-grey-1);
+}
+.hex-code {
+  color: var(--clr-grey-1);
+  margin-bottom: 0;
+}
+
+.color-light .hex-code {
+  color: white;
+}
+.color-light .weight {
+  color: white;
+}
+
+.alert {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
 }
