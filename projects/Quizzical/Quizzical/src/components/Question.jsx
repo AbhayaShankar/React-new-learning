@@ -85,9 +85,9 @@ export default function Question({
   }
 
   return (
-    <>
+    <div className="question-container">
       <h1>{decode(question)}</h1>
-      <h3>{answerOptions}</h3>
+      <section className="answer-options">{answerOptions}</section>
 
       {/* button to see what randomAnswerfunction generates. */}
       {/* <button
@@ -95,6 +95,6 @@ export default function Question({
       >
         click
       </button> */}
-    </>
+    </div>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Confetti from "./Confetti";
 import Question from "./Question";
 
 export default function Quiz({ flip, setFlip }) {

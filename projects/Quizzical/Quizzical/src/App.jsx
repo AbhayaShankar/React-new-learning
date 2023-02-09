@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Intro from "./components/Intro";
 import Quiz from "./components/Quiz";
-import { nanoid } from "nanoid";
 
 function App() {
   /*
