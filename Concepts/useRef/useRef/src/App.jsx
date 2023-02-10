@@ -19,8 +19,8 @@ function App() {
       {/* <h1>Abhaya</h1>
       <p>The value of refValue is {refValue.current}</p>
       <button onClick={handleClick}>clcik</button> */}
-      {/* <Timer /> */}
-      <Pure />
+      <Timer />
+      {/* <Pure /> */}
     </div>
   );
 }
