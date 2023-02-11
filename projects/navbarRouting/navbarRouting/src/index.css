@@ -37,6 +37,7 @@ Variables
   --clr-green-light: hsl(125, 71%, 66%);
   --clr-black: #222;
   --transition: all 0.3s linear;
+  --transition-nav-button: all 0.5s linear;
   --spacing: 0.1rem;
   --radius: 0.25rem;
   --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -143,12 +144,14 @@ nav {
   background: var(--clr-white);
   box-shadow: var(--light-shadow);
 }
+
 .nav-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
 }
+
 .nav-toggle {
   font-size: 1.5rem;
   color: var(--clr-primary-5);
@@ -157,13 +160,17 @@ nav {
   transition: var(--transition);
   cursor: pointer;
 }
+
 .nav-toggle:hover {
   color: var(--clr-primary-1);
-  transform: rotate(90deg);
+  transform: rotate(180deg);
+  transition: var(--transition-nav-button);
 }
+
 .logo {
   height: 40px;
 }
+
 .links a {
   color: var(--clr-grey-3);
   font-size: 1rem;
@@ -173,22 +180,27 @@ nav {
   padding: 0.5rem 1rem;
   transition: var(--transition);
 }
+
 .links a:hover {
   background: var(--clr-primary-8);
   color: var(--clr-primary-5);
   padding-left: 1.5rem;
 }
+
 .social-icons {
   display: none;
 }
+
 .links-container {
   height: 0;
   overflow: hidden;
   transition: var(--transition);
 }
+
 .show-container {
   height: 10rem;
 }
+
 @media screen and (min-width: 800px) {
   .nav-center {
     max-width: 1170px;
