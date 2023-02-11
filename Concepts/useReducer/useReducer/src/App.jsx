@@ -1,4 +1,5 @@
 import React, { useReducer, useState } from "react";
+import Form from "./components/Form";
 
 function App() {
   const ACTION_TYPES = {
@@ -41,6 +42,13 @@ function App() {
         Decrement
       </button>
       <p>hey! you are {state.age} years old</p>
+
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <Form />
     </div>
   );
 }
