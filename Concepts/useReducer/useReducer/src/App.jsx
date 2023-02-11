@@ -7,18 +7,19 @@ function App() {
   };
 
   function reducer(state, action) {
-    if (action.type === ACTION_TYPES.INCREMENT) {
-      return {
-        age: state.age + 1,
-      };
+    switch (action.type) {
+      case ACTION_TYPES.INCREMENT: {
+        return {
+          age: state.age + 1,
+        };
+      }
+      case ACTION_TYPES.DECREMENT: {
+        return {
+          age: state.age - 1,
+        };
+      }
     }
-    if (action.type === ACTION_TYPES.DECREMENT) {
-      return {
-        age: state.age - 1,
-      };
-    } else {
-      throw new Error("unknown action");
-    }
+    throw new Error("Unknown action.");
   }
 
   const [state, dispatch] = useReducer(reducer, { age: 23 });
