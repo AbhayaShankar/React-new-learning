@@ -165,6 +165,18 @@ main {
   }
 }
 
+.home-center-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-text {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
 .btn {
   text-transform: uppercase;
   background: var(--clr-black);
@@ -256,7 +268,7 @@ Sidebar
 }
 .logo {
   justify-self: center;
-  height: 40px;
+  height: 60px;
 }
 
 .links a {
@@ -272,6 +284,7 @@ Sidebar
 
 .links a:hover {
   background: var(--clr-grey-10);
+  padding-left: 2.5rem;
   color: var(--clr-grey-2);
 }
 .links a svg {
@@ -281,11 +294,14 @@ Sidebar
   transition: var(--transition);
 }
 .links a:hover svg {
+  /* padding-left: 2rem; */
   color: var(--clr-grey-4);
 }
 .social-icons {
-  justify-self: center;
   display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
   padding-bottom: 2rem;
 }
 .social-icons a {
