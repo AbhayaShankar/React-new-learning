@@ -232,6 +232,7 @@ Stripe Styles
     height: 100%;
     display: grid;
     align-items: center;
+    gap: 15px;
   }
   .nav-links li {
     height: 100%;
@@ -379,6 +380,7 @@ Stripe Styles
   border-radius: var(--radius);
   transition: var(--transition);
 }
+
 .submenu::before {
   content: "";
   display: block;
@@ -401,18 +403,23 @@ Stripe Styles
   display: grid;
   gap: 0.25rem 2rem;
 }
+
 .col-2 {
   grid-template-columns: repeat(2, 1fr);
 }
+
 .col-3 {
   grid-template-columns: repeat(3, 1fr);
 }
+
 .col-4 {
   grid-template-columns: repeat(4, 1fr);
 }
+
 .submenu h4 {
   margin-bottom: 1.5rem;
 }
+
 .submenu-center a {
   width: 10rem;
   display: block;
@@ -421,6 +428,7 @@ Stripe Styles
   display: flex;
   align-items: center;
 }
+
 .submenu-center svg {
   color: var(--clr-grey-5);
   margin-right: 1rem;
