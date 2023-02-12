@@ -19,8 +19,14 @@ export default function Navbar() {
   //     closeSubmenu();
   //   };
 
+  const handleClose = (e) => {
+    if (!e.target.classList.contains("link-btn")) {
+      closeSubmenu();
+    }
+  };
+
   return (
-    <nav className="nav">
+    <nav className="nav" onMouseOver={handleClose}>
       <div className="nav-center">
         <div className="nav-header">
           <img src={logo} alt="stripe-logo" />
@@ -31,7 +37,7 @@ export default function Navbar() {
         <ul className="nav-links">
           <li>
             <button onMouseOver={displaySubmenu} className="link-btn">
-              Products
+              products
             </button>
           </li>
           <li>
