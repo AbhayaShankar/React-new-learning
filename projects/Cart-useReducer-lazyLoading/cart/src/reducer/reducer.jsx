@@ -22,6 +22,30 @@ const reducer = (state, action) => {
         cart: tempCart,
       };
     }
+    case "DEC_ITEM": {
+      console.log(state);
+
+      let tempCart = state.cart.map((cartItem) => {
+        // if (cartItem.length === 0) {
+        //   return {
+        //     ...state,
+        //     cart: state.cart.filter(
+        //       (cartItem) => cartItem.id !== action.payload
+        //     ),
+        //   };
+        // }
+
+        if (cartItem.id === action.payload) {
+          return { ...cartItem, amount: cartItem.amount - 1 };
+        }
+
+        return cartItem;
+      });
+      return {
+        ...state,
+        cart: tempCart,
+      };
+    }
   }
   return state;
 };
