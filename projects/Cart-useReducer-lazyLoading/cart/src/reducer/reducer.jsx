@@ -78,7 +78,7 @@ const reducer = (state, action) => {
       };
     }
   }
-  return state;
+  throw new Error("No matches Found");
 };
 
 export default reducer;
