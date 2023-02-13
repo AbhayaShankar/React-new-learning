@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import Navbar from "./components/Navbar";
+import CartContainer from "./components/cartContainer";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Abhaya</h1>
-    </div>
+    <main>
+      <Navbar />
+      <CartContainer />
+    </main>
   );
 }
 
