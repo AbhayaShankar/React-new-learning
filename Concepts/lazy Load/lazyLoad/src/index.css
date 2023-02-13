@@ -4,4 +4,68 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: rgb(231, 255, 255);
+}
+
+.text-area {
+  margin: 60px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+hr {
+  margin-bottom: 20px;
+}
+
+p {
+  display: flex;
+  align-self: center;
+}
+
+.loading {
+  color: hsl(0, 0%, 28%);
+  font-size: 50px !important;
+  font-weight: bold !important;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  letter-spacing: 7px !important;
+  cursor: pointer;
+  color: rgb(16, 69, 110);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.loading {
+  padding: 64px;
+  background: linear-gradient(
+    to right,
+    rgb(15, 80, 130) 0,
+    rgb(34, 159, 255) 10%,
+    rgb(15, 80, 130) 20%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 2.5s infinite linear;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  33% {
+    background-position: 200px;
+  }
+  66% {
+    background-position: 400px;
+  }
+  100% {
+    background-position: 600px;
+  }
+}
+
+.content-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

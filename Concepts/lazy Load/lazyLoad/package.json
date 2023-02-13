@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "remarkable": "^2.0.1",
+    "remarkable-react": "^1.4.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
