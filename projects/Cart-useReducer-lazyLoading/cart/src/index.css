@@ -114,9 +114,46 @@ p {
 Navbar
 ===============
 */
+
 .loading {
+  font-size: 50px !important;
+  font-weight: bold !important;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  letter-spacing: 7px !important;
+  cursor: pointer;
+  color: rgb(16, 69, 110);
+  letter-spacing: 2px;
+  text-transform: uppercase;
   text-align: center;
   margin-top: 5rem;
+}
+
+.loading {
+  padding: 64px;
+  background: linear-gradient(
+    to right,
+    rgb(15, 80, 130) 0,
+    rgb(34, 159, 255) 10%,
+    rgb(15, 80, 130) 20%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s infinite linear;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  33% {
+    background-position: 200px;
+  }
+  66% {
+    background-position: 500px;
+  }
+  100% {
+    background-position: 800px;
+  }
 }
 nav {
   background: var(--clr-primary);
