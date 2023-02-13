@@ -62,6 +62,21 @@ const reducer = (state, action) => {
         amount,
       };
     }
+
+    case "LOADING": {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+
+    case "DISPLAY_ITEMS": {
+      return {
+        ...state,
+        cart: action.payload,
+        loading: false,
+      };
+    }
   }
   return state;
 };
