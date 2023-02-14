@@ -14,6 +14,10 @@ export default function Read() {
       });
   });
 
+  const setID = (id) => {
+    console.log(id);
+  };
+
   return (
     <div>
       <Table celled>
@@ -38,7 +42,9 @@ export default function Read() {
                   <Table.Cell>{lastName}</Table.Cell>
                   <Table.Cell>
                     <Link to="/update">
-                      <Button color="green">Update</Button>
+                      <Button color="green" onClick={() => setID(id)}>
+                        Update
+                      </Button>
                     </Link>
                   </Table.Cell>
                   <Table.Cell>
