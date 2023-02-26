@@ -4,7 +4,9 @@ import Header from "./components/Header";
 import AddContact from "./components/AddContact";
 import ContactList from "./components/ContactList";
 import Contacts from "./Data";
+import ContactDetails from "./components/ContactDetail";
 import { v4 as uuidv4 } from "uuid";
+import api from "./api/api";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -14,7 +16,14 @@ import {
 
 function App() {
   const LOCAL_STORAGE_KEY = "contacts";
-  const [contacts, setContacts] = useState(Contacts);
+  const [contacts, setContacts] = useState([]);
+
+  //retrieving data from api call
+  const retrieveContact = async () => {
+    const res = await api.get("/contacts");
+    return res.data;
+  };
+  retrieveContact();
 
   const addContactHandler = (contact) => {
     setContacts([...contacts, { id: uuidv4(), ...contact }]);
@@ -23,11 +32,18 @@ function App() {
 
   // loacl storage getting the items
   useEffect(() => {
-    const contactList = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    if (contactList) {
-      setContacts(contactList);
-    }
+    // const contactList = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    // if (contactList) {
+    //   setContacts(contactList);
+    // }
+    const getAllContacts = async () => {
+      const allContacts = await retrieveContact();
+      if (allContacts) setContacts(allContacts);
+    };
+
+    getAllContacts();
   }, []);
+
   // local storage setting the items
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
@@ -50,15 +66,14 @@ function App() {
           element={
             <ContactList contacts={contacts} getContactId={removeContact} />
           }
-
-          // render={() => (
-          //   <ContactList contacts={contacts} getContactId={removeContact} />
-          // )}
         />
+
         <Route
           path="/add"
           element={<AddContact addContactHandler={addContactHandler} />}
         />
+
+        <Route path={`contact/:id`} element={<ContactDetails />} />
       </Route>
     )
   );

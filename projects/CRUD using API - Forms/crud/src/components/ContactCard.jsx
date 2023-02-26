@@ -1,11 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import EditIcon from "@mui/icons-material/Edit";
 
-function ContactCard({ contact, clickHandler }) {
+function ContactCard({ contact }) {
   const { name, email, id } = contact;
-
+  const navigate = useNavigate();
   return (
     <div className="flex items-center gap-5 justify-between mx-auto w-96 mb-6 mt-6">
       <div className="flex items-center gap-5" key={id}>
@@ -13,8 +15,11 @@ function ContactCard({ contact, clickHandler }) {
           <AccountCircleIcon style={{ fontSize: "32px" }} />
         </div>
         <div>
-          <h1>{name}</h1>
-          <h1>{email}</h1>
+          {/* {console.log(id)} */}
+          <Link to={{ pathname: `contact/${id}`, state: { contact: contact } }}>
+            <h1>{name}</h1>
+            <h1>{email}</h1>
+          </Link>
         </div>
       </div>
       <div className="flex items-center gap-3">
