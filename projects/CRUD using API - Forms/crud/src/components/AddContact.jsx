@@ -1,14 +1,17 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function AddContact({ addContactHandler }) {
+  // console.log(addContactHandler);
   const [contactItem, setContactItem] = useState({
     name: "",
     email: "",
   });
 
   const handleChange = (event) => {
-    // console.log(event.target);
+    console.log(event.target.value);
     setContactItem({ ...contactItem, [event.target.name]: event.target.value });
+    console.log(contactItem);
   };
 
   const handleSubmit = (e) => {
@@ -16,8 +19,8 @@ function AddContact({ addContactHandler }) {
     if (contactItem.name === "" || contactItem.email === "") {
       alert("All field are mandatory");
     } else {
-      addContactHandler(contactItem);
       console.log(contactItem);
+      addContactHandler(contactItem);
       setContactItem({ name: "", email: "" });
     }
   };
@@ -51,9 +54,11 @@ function AddContact({ addContactHandler }) {
               onChange={handleChange}
             />
           </div>
-          <button className="border-2 bg-gray-500 px-5 py-1 rounded-lg text-white">
-            Submit
-          </button>
+          <Link to={"/"}>
+            <button className="border-2 bg-gray-500 px-5 py-1 rounded-lg text-white">
+              Submit
+            </button>
+          </Link>
         </form>
       </div>
     </div>

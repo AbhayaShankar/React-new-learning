@@ -3,7 +3,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import EditIcon from "@mui/icons-material/Edit";
 
-function ContactCard({ contact }) {
+function ContactCard({ contact, clickHandler }) {
   const { name, email, id } = contact;
 
   return (
@@ -19,7 +19,10 @@ function ContactCard({ contact }) {
       </div>
       <div className="flex items-center gap-3">
         <EditIcon style={{ fontSize: "32px", color: "#0096ff" }} />
-        <DeleteForeverIcon sx={{ color: "red", fontSize: "32px" }} />
+        <DeleteForeverIcon
+          onClick={() => clickHandler(id)}
+          sx={{ color: "red", fontSize: "32px" }}
+        />
       </div>
     </div>
   );
