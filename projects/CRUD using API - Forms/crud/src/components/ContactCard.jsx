@@ -5,7 +5,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import EditIcon from "@mui/icons-material/Edit";
 
-function ContactCard({ contact }) {
+function ContactCard({ contact, clickHandler }) {
   const { name, email, id } = contact;
   const navigate = useNavigate();
   return (

@@ -25,12 +25,20 @@ function App() {
   };
   retrieveContact();
 
-  const addContactHandler = (contact) => {
-    setContacts([...contacts, { id: uuidv4(), ...contact }]);
+  const addContactHandler = async (contact) => {
+    const request = {
+      id: uuidv4(),
+      ...contact,
+    };
+
+    const response = await api.post("/contacts", request);
+
+    setContacts([...contacts, response.data]);
     console.log(contact);
   };
 
   // loacl storage getting the items
+  // replacing local storage with the local json server we created
   useEffect(() => {
     // const contactList = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     // if (contactList) {
@@ -46,11 +54,12 @@ function App() {
 
   // local storage setting the items
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
+    // localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
   }, [contacts]);
 
   // for deleting the contact
-  const removeContact = (id) => {
+  const removeContact = async (id) => {
+    await api.delete(`/contacts/${id}`);
     const newContactList = contacts.filter((contact) => {
       return contact.id !== id;
     });

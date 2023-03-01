@@ -1,21 +1,19 @@
 {
-    "contacts" : [
-        {
-            "id":"1",
-            "name":"Abhaya",
-            "email":"Shankar@gmail.com"
-        },
-
-        {
-            "id":"2",
-            "name":"Harshit",
-            "email":"harshit@gmail.com"
-        },
-
-        {
-            "id":"3",
-            "name":"Raj",
-            "email":"raj@gmail.com"
-        }
-    ]
+  "contacts": [
+    {
+      "id": "1",
+      "name": "Abhaya",
+      "email": "Shankar@gmail.com"
+    },
+    {
+      "id": "3",
+      "name": "Raj",
+      "email": "raj@gmail.com"
+    },
+    {
+      "id": "fab47234-d018-4d20-8138-bf48281cfe3c",
+      "name": "Sneha Lata",
+      "email": "lata@gmail.com"
+    }
+  ]
 }
