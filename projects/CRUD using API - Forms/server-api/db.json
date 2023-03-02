@@ -1,17 +1,12 @@
 {
   "contacts": [
     {
-      "id": "1",
-      "name": "Abhaya",
-      "email": "Shankar@gmail.com"
+      "id": "ad8319cd-2f94-4fac-8164-3b1d0d379a43",
+      "name": "Abhaya Shankar",
+      "email": "shankarabhaya9@gmail.com"
     },
     {
-      "id": "3",
-      "name": "Raj",
-      "email": "raj@gmail.com"
-    },
-    {
-      "id": "fab47234-d018-4d20-8138-bf48281cfe3c",
+      "id": "cd6aa6c1-6e61-4d28-955e-dac2cb402735",
       "name": "Sneha Lata",
       "email": "lata@gmail.com"
     }
