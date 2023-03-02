@@ -13,6 +13,7 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
+import EditContact from "./components/EditContact";
 
 function App() {
   const LOCAL_STORAGE_KEY = "contacts";
@@ -36,6 +37,8 @@ function App() {
     setContacts([...contacts, response.data]);
     console.log(contact);
   };
+
+  const updateContactHandler = () => {};
 
   // loacl storage getting the items
   // replacing local storage with the local json server we created
@@ -80,6 +83,11 @@ function App() {
         <Route
           path="/add"
           element={<AddContact addContactHandler={addContactHandler} />}
+        />
+
+        <Route
+          path="/edit"
+          element={<EditContact updateContactHandler={updateContactHandler} />}
         />
 
         <Route path={`contact/:id`} element={<ContactDetails />} />

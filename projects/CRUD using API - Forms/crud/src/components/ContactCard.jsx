@@ -15,7 +15,6 @@ function ContactCard({ contact, clickHandler }) {
           <AccountCircleIcon style={{ fontSize: "32px" }} />
         </div>
         <div>
-          {/* {console.log(id)} */}
           <Link to={{ pathname: `contact/${id}`, state: { contact: contact } }}>
             <h1>{name}</h1>
             <h1>{email}</h1>
@@ -23,7 +22,13 @@ function ContactCard({ contact, clickHandler }) {
         </div>
       </div>
       <div className="flex items-center gap-3">
-        <EditIcon style={{ fontSize: "32px", color: "#0096ff" }} />
+        <Link to={{ pathname: `/edit`, state: { contact: contact } }}>
+          <EditIcon
+            style={{ fontSize: "32px", color: "#0096ff" }}
+            onClick={() => clickHandler(id)}
+          />
+        </Link>
+
         <DeleteForeverIcon
           onClick={() => clickHandler(id)}
           sx={{ color: "red", fontSize: "32px" }}

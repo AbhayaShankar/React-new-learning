@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 // import { withRouter } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-function AddContact({ addContactHandler }) {
-  let navigate = useNavigate();
+function EditContact({ updateContactHandler, contact }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const { id, name, email } = contact;
   const [contactItem, setContactItem] = useState({
-    name: "",
-    email: "",
+    id: id,
+    name: name,
+    email: email,
   });
+  const data = location.state;
+  console.log(data);
 
   const handleChange = (event) => {
     console.log(event.target.value);
@@ -23,7 +29,7 @@ function AddContact({ addContactHandler }) {
     if (contactItem.name === "" || contactItem.email === "") {
       alert("All fields are mandatory");
     } else {
-      addContactHandler(contactItem);
+      updateContactHandler(contactItem);
       setContactItem({ name: "", email: "" });
       navigate("/");
       // this.props.history.push("/");
@@ -73,4 +79,4 @@ function AddContact({ addContactHandler }) {
   );
 }
 
-export default AddContact;
+export default EditContact;
